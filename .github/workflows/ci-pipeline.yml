@@ -1,0 +1,24 @@
+name: "ci-pipeline"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          pip install black
+          pip install flake8
+      - name: Format Code
+        run: black .
+      - name: Lint Code
+        run: flake8 .
+      
