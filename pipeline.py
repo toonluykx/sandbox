@@ -1,7 +1,6 @@
-from dataclasses import replace
 from pyspark.sql import DataFrame, SparkSession
 import pyspark.sql.functions as f
-from typing import Tuple, List
+from typing import Tuple
 
 def run_pipeline(spark: SparkSession) -> None:
     airlines, airports, flights = read_sources(spark)
